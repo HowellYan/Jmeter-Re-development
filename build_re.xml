@@ -160,12 +160,14 @@
       <class location="${dest.jar}/ApacheJMeter_native.jar"/>
       <class location="${dest.jar}/ApacheJMeter_mongodb.jar"/>
       <class location="${dest.jar}/ApacheJMeter_tcp.jar"/>
+      <class location="${dest.jar}/susie_dataCheck.jar"/>
       <class location="${dest.jar.jmeter}/ApacheJMeter.jar" />
       <sourcePath path="${src.jorphan}" />
       <sourcePath path="${src.tcp}" />
       <sourcePath path="${src.jms}" />
       <sourcePath path="${src.native}" />
       <sourcePath path="${src.mongodb}" />
+      <sourcePath path="${src.dataCheck}" />
 
       <auxClasspath>
         <fileset dir="${lib.dir}">
@@ -228,6 +230,9 @@
   <property name="src.native" value="src/protocol/native"/>
   <property name="src.mongodb" value="src/protocol/mongodb"/>
 
+  <!-- Where the Re-Development Sources live, susie -->
+  <property name="src.dataCheck" value="src/ReDevelopment/dataCheck"/>
+
   <!-- Where the documentation sources live -->
   <property name="src.docs" value="xdocs"/>
   <property name="src.css" value="xdocs/css"/>
@@ -252,6 +257,7 @@
     <pathelement location="${src.jms}"/>
     <pathelement location="${src.native}"/>
     <pathelement location="${src.mongodb}"/>
+    <pathelement location="${src.dataCheck}"/>
   </path>
 
   <!-- Temporary build directories: where the .class live -->
@@ -3286,6 +3292,7 @@ run JMeter unless all the JMeter jars are added.
                 <fileset dir="${src.ldap}"/>
                 <fileset dir="${src.mail}"/>
                 <fileset dir="${src.mongodb}"/>
+                <fileset dir="${src.dataCheck}"/>
                 <fileset dir="${src.native}"/>
                 <fileset dir="${src.tcp}"/>
                 <fileset dir="${src.test}"/>
