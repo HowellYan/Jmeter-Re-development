@@ -425,6 +425,7 @@
     <include name="${lib.dir}/${log4j-core.jar}"/>
     <include name="${lib.dir}/${log4j-slf4j-impl.jar}"/>
     <include name="${lib.dir}/${mongo-java-driver.jar}"/>
+    <include name="${lib.dir}/${mysql-java-driver.jar}"/>
     <include name="${lib.dir}/${ph-css.jar}"/>
     <include name="${lib.dir}/${ph-commons.jar}"/>
     <include name="${lib.dir}/${rsyntaxtextarea.jar}"/>
@@ -505,6 +506,7 @@
     <pathelement location="${lib.dir}/${log4j-core.jar}"/>
     <pathelement location="${lib.dir}/${log4j-slf4j-impl.jar}"/>
     <pathelement location="${lib.dir}/${mongo-java-driver.jar}"/>
+    <pathelement location="${lib.dir}/${mysql-java-driver.jar}"/>
     <pathelement location="${lib.dir}/${ph-css.jar}"/>
     <pathelement location="${lib.dir}/${ph-commons.jar}"/>
     <pathelement location="${lib.dir}/${rsyntaxtextarea.jar}"/>
@@ -3164,6 +3166,7 @@ run JMeter unless all the JMeter jars are added.
     <process_jarfile jarname="jsoup"/>
     <process_jarfile jarname="junit"/>
     <process_jarfile jarname="mongo-java-driver"/>
+    <process_jarfile jarname="mysql-java-driver"/>
     <process_jarfile jarname="ph-css" />
     <process_jarfile jarname="ph-commons" />
     <process_jarfile jarname="rsyntaxtextarea"/>
