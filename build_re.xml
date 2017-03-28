@@ -411,6 +411,7 @@
     <include name="${lib.dir}/${jodd-props.jar}"/>
     <include name="${lib.dir}/${json-path.jar}"/>
     <include name="${lib.dir}/${json-smart.jar}"/>
+    <include name="${lib.dir}/${org-json.jar}"/>
     <include name="${lib.dir}/${jsoup.jar}"/>
     <include name="${lib.dir}/${junit.jar}"/>
     <include name="${lib.dir}/${log4j-1.2-api.jar}"/>
@@ -490,6 +491,7 @@
     <pathelement location="${lib.dir}/${jodd-props.jar}"/>
     <pathelement location="${lib.dir}/${json-path.jar}"/>
     <pathelement location="${lib.dir}/${json-smart.jar}"/>
+    <pathelement location="${lib.dir}/${org-json.jar}"/>
     <pathelement location="${lib.dir}/${jsoup.jar}"/>
     <pathelement location="${lib.dir}/${junit.jar}"/>
     <pathelement location="${lib.dir}/${log4j-1.2-api.jar}"/>
@@ -3126,6 +3128,7 @@ run JMeter unless all the JMeter jars are added.
     <process_jarfile jarname="jodd-props"/>
     <process_jarfile jarname="json-path"/>
     <process_jarfile jarname="json-smart"/>
+    <process_jarfile jarname="org-json"/>
     <process_jarfile jarname="jsoup"/>
     <process_jarfile jarname="junit"/>
     <process_jarfile jarname="mongo-java-driver"/>
