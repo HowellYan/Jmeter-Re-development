@@ -278,6 +278,7 @@
   <property name="build.jms" value="build/protocol/jms"/>
   <property name="build.native" value="build/protocol/native"/>
   <property name="build.mongodb" value="build/protocol/mongodb"/>
+  <property name="build.dataCheck" value="build/ReDevelopment/dataCheck"/>
   <property name="build.test" value="build/test"/>
   <property name="build.res" value="build/res"/>
   <property name="build.test-res" value="test/resources"/>
@@ -708,6 +709,7 @@
         <pathelement location="${build.ldap}"/>
         <pathelement location="${build.mail}"/>
         <pathelement location="${build.mongodb}"/>
+        <pathelement location="${build.dataCheck}"/>
         <pathelement location="${build.native}"/>
         <pathelement location="${build.tcp}"/>
         <!-- Also include compiled jars to allow running tests without rebuilding source -->
@@ -882,8 +884,19 @@
     </javac>
   </target>
 
+  <target name="compile-dataCheck" depends="init-version" description="Compile dataCheck utility classes.">
+    <mkdir dir="${build.dataCheck}"/>
+    <javac srcdir="${src.dataCheck}" destdir="${build.dataCheck}" source="${src.java.version}" optimize="${optimize}" debug="on" target="${target.java.version}"
+           includeAntRuntime="${includeAntRuntime}" deprecation="${deprecation}" encoding="${encoding}">
+      <include name="**/*.java"/>
+      <classpath>
+        <path refid="classpath"/>
+      </classpath>
+    </javac>
+  </target>
+
   <target name="compile"
-  depends="_message_3rdParty,compile-core,compile-components,compile-functions,compile-protocols,compile-junit,compile-jms,compile-native, compile-mongodb"
+  depends="_message_3rdParty,compile-core,compile-components,compile-functions,compile-protocols,compile-junit,compile-jms,compile-native, compile-mongodb, compile-dataCheck"
   description="Compile everything."/>
 
   <target name="run_gui" depends="package" description="Run the JMeter GUI off the jar files">
@@ -1162,6 +1175,18 @@ run JMeter unless all the JMeter jars are added.
         fullpath="META-INF/LICENSE" />
       <fileset dir="${build.mongodb}" includes="**/*.class" />
       <fileset dir="${src.mongodb}" includes="**/*.properties" />
+    </jar>
+
+    <!-- ReDevelopment dataCheck -->
+    <!-- Ensure that build dir exists, even if dataCheck has not been built -->
+    <mkdir dir="${build.dataCheck}"/>
+    <jar jarfile="${dest.jar}/susie_dataCheck.jar" manifest="${build.dir}/MANIFEST_BIN.MF">
+      <zipfileset file="${resources.meta-inf}/default.notice"
+                  fullpath="META-INF/NOTICE" />
+      <zipfileset file="${resources.meta-inf}/default.license"
+                  fullpath="META-INF/LICENSE" />
+      <fileset dir="${build.dataCheck}" includes="**/*.class" />
+      <fileset dir="${src.dataCheck}" includes="**/*.properties" />
     </jar>
 
     <jar jarfile="${lib.dir}/jorphan.jar" manifest="${build.dir}/MANIFEST_BIN.MF">
@@ -2015,6 +2040,7 @@ run JMeter unless all the JMeter jars are added.
     <deployfile stem="ApacheJMeter_ldap"/>
     <deployfile stem="ApacheJMeter_mail"/>
     <deployfile stem="ApacheJMeter_mongodb"/>
+    <deployfile stem="susie_dataCheck"/>
     <deployfile stem="ApacheJMeter_native"/>
     <deployfile stem="ApacheJMeter_tcp"/>
   </target>
@@ -3274,6 +3300,7 @@ run JMeter unless all the JMeter jars are added.
                 <fileset dir="${build.ldap}"/>
                 <fileset dir="${build.mail}"/>
                 <fileset dir="${build.mongodb}"/>
+                <fileset dir="${build.dataCheck}"/>
                 <fileset dir="${build.native}"/>
                 <fileset dir="${build.tcp}"/>
                 <fileset dir="${build.test}"/>
